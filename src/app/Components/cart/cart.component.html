@@ -1,0 +1,77 @@
+<ng-container>
+
+  <div class="container-fluid m-5 px-5">
+
+    <div class="card-table">
+
+      <div class=" cart-product">
+        <table class="table table-primary ">
+
+          <!-- row -->
+
+          <thead>
+            <tr class="table-dark">
+
+
+              <th scope="col">Date</th>
+
+              <th scope="col" style=" width: 25%">Quantity</th>
+
+              <th scope="col">Action</th>
+
+            </tr>
+          </thead>
+
+
+          <!-- 2nd row -->
+           <tbody>
+            <tr *ngFor="let item of carts; let index=index">
+              <td>{{item.date | date:"shortDate"}}</td>
+              <td>
+                 {{item.quantity}}
+              </td>
+              <!-- <td>{{item.item.price * item.quantity}} EG</td> -->
+              <td>
+                <button class=" btn btn-danger  m-2" > Delete</button>
+                <button class=" btn btn-success  m-2"> View</button>
+              </td>
+
+            </tr>
+
+
+            <div class="row m-5">
+
+            <!-- <button  class=" btn bg-warning m-3" > Empty Cart</button>
+             <button routerLink="/products" class=" btn bg-success m-3"> Shop More</button>
+           <button class=" btn bg-danger m-3" >Checkout</button> -->
+
+
+
+          </div>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+</ng-container>
+
+
+<!-- <ng-container>
+
+  <div class=" container col-md-7 col-lg-7 order-md-last m-5">
+    <div class="card justify-content-between align-items-center mb-3">
+      <h5 class="card-title mt-3">My cart</h5>
+      <h5 class="card-title mt-3">Add Item Now</h5>
+      <div class="card border-0 p-2 ">
+        <div class="input-group ">
+
+          <button routerLink="/products" type="submit" class="btn btn-primary  ">Shop Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-container> -->

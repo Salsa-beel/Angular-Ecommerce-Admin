@@ -1,0 +1,24 @@
+<div class="card mb-2rounded-3 shadow-sm ">
+
+  <div class="card-body  ">
+
+    <div routerLink="/details/{{data.id}}">
+    <img class="img-fluid w-25 h-50 " src="{{data.image}}">
+  </div>
+    <ul class="list-unstyled mt-3 mb-4">
+      <li>{{data.title}}</li>
+
+      <li> <strong>Price </strong>{{data.price}}</li>
+
+    </ul>
+
+    <button type="button" class="w-500 btn btn-lg btn-primary" *ngIf="!addButton" (click)="addButton = true">Add to
+      cart</button>
+      <!-- <button class="btn btn-success m-2" routerLink="/details/{{data.id}}">View Details</button> -->
+    <div class="d-flex w-50" *ngIf="addButton">
+      <input type="number" class="form-control" [(ngModel)]="amount">
+      <button class="btn btn-danger" (click)="add();addButton= false"> Add</button>
+    </div>
+
+  </div>
+</div>

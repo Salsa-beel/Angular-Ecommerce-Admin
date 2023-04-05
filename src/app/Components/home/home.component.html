@@ -1,0 +1,56 @@
+
+  <div class="row">
+    <div class="d-flex">
+      <img class="img-fluid h-50 w-100" src="assets/pic1.jpeg">
+    </div>
+
+  </div>
+
+<div class=" alert alert-primary " *ngIf="toggle"> {{title}}</div>
+
+<a class="btn btn-primary m-5" (click)="changeToggle()">{{text}}</a>
+
+<div class="container-fluid mt-3 p-5 ">
+  <!-- <div> <button class=" btn btn-primary" (click)="changeToggle()"> change </button></div> -->
+
+<!-- <table class="table table-primary ">
+
+
+
+    <thead>
+      <tr class="table-dark">
+    <th scope="col">id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Count</th>
+    <th scope="col">Price</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+
+
+
+  <tbody class="table-group-divider">
+  <tr *ngFor="let item of customers">
+    <td>{{item.ssn}}</td>
+    <td>{{item.name}} </td>
+    <td>{{item.age}}</td>
+    <td>
+      <ul>
+        <li *ngFor="let item of item.children">{{item}}</li>
+      </ul>
+    </td>
+
+<td>
+
+  <button class=" btn btn-warning m-2"> Edit</button>
+  <button class=" btn btn-danger  m-2"> Delete</button>
+  <button class=" btn btn-success m-2"> View</button>
+
+
+</td>
+
+  </tr>
+</tbody>
+</table> -->
+</div>
+
