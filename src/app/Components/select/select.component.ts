@@ -7,12 +7,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class SelectComponent implements OnInit {
 categories: any;
+
 filterCategory($event: Event) {
 throw new Error('Method not implemented.');
 }
 
 @Input()title : string =""
-@Input()data : any[]=[ ]
+@Input()data : any[]=[ ];
+@Input() all:boolean = true;
 @Output()selectedValue =  new EventEmitter()
 
   constructor() { }

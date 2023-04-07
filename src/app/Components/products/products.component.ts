@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/service/products.service';
 import { CartService } from 'src/app/service/cart.service';
 import { JsonPipe } from '@angular/common';
 import { Product } from 'src/app/Models/product';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
@@ -15,10 +16,23 @@ products : Product [] = [];
 categories :string[]=[];
 grandTotal: any;
 cartProducts:any[] = []; // 3ayza ageb el data mn local storage w a7otaha fe array esmo cart fa hena 3arft el array
+base64:any = ''
+form!:FormGroup
+item: any;
 
-  constructor( private service :ProductsService, private cartService :CartService ) { }
+  constructor( private service :ProductsService, private build:FormBuilder ) { }
 
   ngOnInit():void {
+
+    this.form = this.build.group({
+      title: ['',[Validators.required]],
+      price: ['',[Validators.required]],
+      description: ['',[Validators.required]],
+      image: ['',[Validators.required]],
+      category: ['',[Validators.required]]
+    })
+
+
     this.getAllProducts()
     this.getCategories()
   }
@@ -98,6 +112,48 @@ cartProducts:any[] = []; // 3ayza ageb el data mn local storage w a7otaha fe arr
 
     })
   }
+
+
+  //=====================================================
+
+  getSelectedCategory(event:any){
+  this.form.get('category')?.setValue(event.target.value)
+  }
+
+
+
+getImagePath(event:any){
+
+const file= event.target.files[0]; //ba5ezn el image fe file
+const reader = new FileReader();
+reader.readAsDataURL(file);
+reader.onload = () => {
+  this.base64 = reader.result;
+  this.form.get('category')?.setValue(this.base64)
+}
+
+}
+
+addProduct(){
+  const model = this.form.value
+  this.service.createProduct(model).subscribe(res => {
+
+    alert ("Add Product success")
+  })
+
+}
+
+
+
+update (item:any){
+  this.form.get('title')?.setValue(item.title)
+  this.form.get('description')?.setValue(item.description)
+  this.form.get('category')?.setValue(item.category)
+  this.form.get('price')?.setValue(item.price)
+  this.form.get('title')?.setValue(item.title)
+  this.form.get('image')?.setValue(item.image)
+}
+
 
 
 

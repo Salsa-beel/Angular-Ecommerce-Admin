@@ -30,6 +30,11 @@ getProductsById(id:any){
 }
 
 
+createProduct(newProduct:any){
+  return this.http.post("https://fakestoreapi.com/products/",newProduct)
+
+}
+
 
 
 }

@@ -2,7 +2,7 @@
 
 <label for="" class="my-3">{{title}}:</label>
 <select class="form-control" (change)="detectChanges($event)">
-  <option value="all">All</option>
+  <option value="all" *ngIf="all">All</option>
 
   <option value="{{option}}" *ngFor="let option of data" >{{option}}</option>
 

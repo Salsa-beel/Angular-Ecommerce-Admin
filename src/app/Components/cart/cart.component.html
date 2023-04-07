@@ -2,23 +2,46 @@
 
   <div class="container-fluid m-5 px-5">
 
+
+    <form [formGroup]="form">
+
+      <div class="row">
+
+        <div class="col-md-3">
+          <label for="">Start Date</label>
+          <input type="date" formControlName="start" class="form-control">
+        </div>
+
+        <div class="col-md-3">
+          <label for="">End Date</label>
+          <input type="date" formControlName="end" class="form-control">
+        </div>
+
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-success" (click)="applyFilter()">Apply</button>
+        </div>
+
+      </div>
+
+    </form>
+
     <div class="card-table">
+      
 
       <div class=" cart-product">
         <table class="table table-primary ">
+
 
           <!-- row -->
 
           <thead>
             <tr class="table-dark">
-
-
               <th scope="col">Date</th>
-
+             
+              <th scope="col" style="width:25%">Price</th>
               <th scope="col" style=" width: 25%">Quantity</th>
-
+              <!-- <th scope="col">Total</th> -->
               <th scope="col">Action</th>
-
             </tr>
           </thead>
 
@@ -26,24 +49,28 @@
           <!-- 2nd row -->
            <tbody>
             <tr *ngFor="let item of carts; let index=index">
-              <td>{{item.date | date:"shortDate"}}</td>
+
+
+             <td>{{item.date | date: "yyyy-mm-dd format"}}</td>
+              <td>{{item.item.price}}</td>
               <td>
-                 {{item.quantity}}
+                 
+                {{item.products.length}}
               </td>
-              <!-- <td>{{item.item.price * item.quantity}} EG</td> -->
+             
               <td>
-                <button class=" btn btn-danger  m-2" > Delete</button>
-                <button class=" btn btn-success  m-2"> View</button>
+                <button class=" btn btn-danger  m-2" (click)="deleteCart(item.id)" > Delete</button>
+                <button class=" btn btn-success  m-2"  data-toggle="modal" data-target="#viewCart" (click)="view(index)"> View</button>
               </td>
 
             </tr>
-
+           
 
             <div class="row m-5">
 
-            <!-- <button  class=" btn bg-warning m-3" > Empty Cart</button>
-             <button routerLink="/products" class=" btn bg-success m-3"> Shop More</button>
-           <button class=" btn bg-danger m-3" >Checkout</button> -->
+            
+             <button routerLink="/products" class=" btn bg-danger m-3"> Shop More</button>
+           
 
 
 
@@ -51,7 +78,7 @@
           </tbody>
         </table>
       </div>
-
+      
     </div>
 
   </div>
